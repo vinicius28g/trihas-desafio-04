@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Relatório Educacional - Maranhão</title>
+
+  <script src="https://code.highcharts.com/highcharts.js"></script>
+  <script src="https://code.highcharts.com/modules/exporting.js"></script>
+  <script src="https://code.highcharts.com/modules/export-data.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/alpinejs" defer></script>
+
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+
+  <style>
+    body { background-color: #f9fafb; color: #1f2937; font-family: Arial, sans-serif; }
+    .card {
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgb(0 0 0 / 0.1);
+      padding: 16px;
+      margin-bottom: 16px;
+    }
+    h1,h2,h3 { margin-bottom: 8px; }
+    /* Ajuste para os containers dos gráficos */
+    #idebChart, #enemMaChart, #inseChart {
+      width: 100%;
+      height: 400px;
+    }
+  </style>
+</head>
+<body x-data="{ estado: 'MA', rede: 'todas' }">
+
+  <div class="container mx-auto p-6 max-w-5xl">
+
+    <h1 class="text-3xl font-bold mb-6">Relatório Educacional - Maranhão</h1>
+
+    <!-- Filtros -->
+    <div class="flex space-x-4 mb-8 items-center">
+      <select x-model="estado" class="border rounded px-3 py-2">
+        <option value="MA">Maranhão</option>
+        <option value="SP">São Paulo</option>
+        <option value="RJ">Rio de Janeiro</option>
+        <!-- Mais estados aqui -->
+      </select>
+
+      <select x-model="rede" class="border rounded px-3 py-2">
+        <option value="todas">Todas</option>
+        <option value="publica">Pública</option>
+        <option value="privada">Privada</option>
+      </select>
+
+      <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" @click="atualizarGraficos()">
+        Pesquisar
+      </button>
+    </div>
+
+    <!-- IDEB -->
+    <div class="card">
+      <h2 class="text-xl font-semibold">Nota do IDEB nos últimos 5 anos</h2>
+      <div id="idebChart"></div>
+    </div>
+
+    <!-- ENEM Maranhão -->
+    <div class="card">
+      <h2 class="text-xl font-semibold mb-4">Notas e Médias do ENEM no Maranhão</h2>
+      <div id="enemMaChart"></div>
+    </div>
+    <div class="card">
+      <h2 class="text-xl font-semibold mb-4"> Médias do ENEM no Brasil</h2>
+      <div id="mapa brasil" style="width: 800px; height: 600px; margin: 0 auto"></div>
+    </div>
+     
+    <!-- INSE -->
+    <div class="card">
+      <h2 class="text-xl font-semibold">Distribuição de Escolas por Nível INSE</h2>
+      <div id="inseChart"></div>
+    </div>
+
+    <!-- Infraestrutura -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
+      <div class="card">
+        <h3 class="font-semibold">Biblioteca</h3>
+        <p>Quantidade: 800</p>
+      </div>
+      <div class="card">
+        <h3 class="font-semibold">Água Filtrada</h3>
+        <p>Quantidade: 200</p>
+      </div>
+      <div class="card">
+        <h3 class="font-semibold">Sala de Atendimento Especial</h3>
+        <p>Quantidade: 240</p>
+      </div>
+      <div class="card">
+        <h3 class="font-semibold">Internet</h3>
+        <p>Quantidade: 500</p>
+      </div>
+      <div class="card">
+        <h3 class="font-semibold">Banda Larga</h3>
+        <p>Quantidade: 200</p>
+      </div>
+      <div class="card">
+        <h3 class="font-semibold">Acessibilidade</h3>
+        <p>Quantidade: 400</p>
+      </div>
+    </div>
+
+  </div>
+
+<script>
+  let idebChart, enemMaChart, inseChart;
+
+  const dadosIdeb = {
+    categories: ['2015', '2017', '2019', '2021', '2023'],
+    series: [
+      {
+        name: 'Nota Atingida',
+        data: [3.6, 3.9, 4.0, 4.1, 4.3],
+        color: 'green',
+      },
+      {
+        name: 'Nota Esperada',
+        data: [3.7, 4.0, 4.2, 4.3, 4.5],
+        dashStyle: 'Dash',
+        color: 'gray',
+      }
+    ]
+  };
+
+  const dadosEnemMA = {
+    categories: ['Linguagens', 'Matemática', 'Ciências Humanas', 'Ciências da Natureza', 'Redação'],
+    series: [{
+      name: 'Média MA',
+      data: [480, 470, 460, 455, 500],
+      color: '#2563eb' // azul tailwind
+    }]
+  };
+
+  const dadosInse = {
+    categories: ['Nível 1', 'Nível 2', 'Nível 3', 'Nível 4', 'Nível 5', 'Nível 6', 'Nível 7', 'Nível 8'],
+    series: [{
+      name: 'Quantidade de Escolas',
+      data: [1200, 1000, 800, 600, 400, 200, 100, 50],
+      color: '#14b8a6' // teal tailwind
+    }]
+  };
+
+  function criarGraficos() {
+    if (idebChart) idebChart.destroy();
+    if (enemMaChart) enemMaChart.destroy();
+    if (inseChart) inseChart.destroy();
+
+    idebChart = Highcharts.chart('idebChart', {
+      chart: { type: 'line' },
+      title: { text: '' },
+      xAxis: { categories: dadosIdeb.categories },
+      yAxis: {
+        min: 0,
+        max: 5,
+        title: { text: 'Nota' }
+      },
+      tooltip: { shared: true },
+      series: dadosIdeb.series,
+      credits: { enabled: false }
+    });
+
+    enemMaChart = Highcharts.chart('enemMaChart', {
+      chart: { type: 'column' },
+      title: { text: '' },
+      xAxis: { categories: dadosEnemMA.categories, crosshair: true },
+      yAxis: {
+        min: 0,
+        max: 600,
+        title: { text: 'Pontos' }
+      },
+      tooltip: { shared: true },
+      series: dadosEnemMA.series,
+      credits: { enabled: false }
+    });
+
+    inseChart = Highcharts.chart('inseChart', {
+      chart: { type: 'column' },
+      title: { text: '' },
+      xAxis: { categories: dadosInse.categories, crosshair: true },
+      yAxis: {
+        min: 0,
+        title: { text: 'Quantidade de Escolas' }
+      },
+      tooltip: { shared: true },
+      series: dadosInse.series,
+      credits: { enabled: false }
+    });
+  }
+
+  function atualizarGraficos() {
+    // Você pode aqui atualizar os dados dinamicamente conforme filtros.
+    criarGraficos();
+  }
+
+  window.onload = () => {
+    criarGraficos();
+  };
+</script>
+
+
+<script>
+    // Dados de exemplo: cada objeto tem o código do estado e a média do indicador
+    // O código dos estados no mapa highcharts usa a sigla em minúsculo (ex: 'br-sp' para São Paulo)
+    
+  </script>
+
+</body>
+</html>
