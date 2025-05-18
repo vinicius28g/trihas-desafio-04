@@ -8,8 +8,7 @@
   <script src="https://code.highcharts.com/highcharts.js"></script>
   <script src="https://code.highcharts.com/modules/exporting.js"></script>
   <script src="https://code.highcharts.com/modules/export-data.js"></script>
-  <script src="https://cdn.jsdelivr.net/gh/kelvins/Estados-Cidades-IBGE/estados-cidades.js"></script>
-  <script src="../script.js"></script>
+ 
   <script src="https://unpkg.com/cash-dom/dist/cash.min.js"></script>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
 
@@ -45,10 +44,20 @@
   <option value="">Selecione uma cidade</option>
 </select>
 
-      <select x-model="rede" class="border rounded px-3 py-2">
-        <option value="todas">Todas</option>
-        <option value="publica">Pública</option>
-        <option value="privada">Privada</option>
+<select name="select_ano" class="border rounded px-3 py-2" id="select_ano_ideb_mapa" onchange="gerarGraficoMapaIdeb()">
+        <option value="2019" selected>2019</option>
+        <option value="2017">2017</option>
+        <option value="2015">2015</option>
+        <option value="2013">2013</option>
+        <option value="2011">2011</option>
+      </select>
+
+      <select x-model="rede" class="border rounded px-3 py-2" id="select_rede_ensino">
+        <option value="0" selected>Federal</option>
+        <option value="1">Federal</option>
+        <option value="2">Estadual</option>
+        <option value="3">Municipal</option>
+        <option value="4">Privada</option>
       </select>
 
       <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" @click="atualizarGraficos()">
@@ -110,60 +119,8 @@
   </div>
 
 
-
+ <script src="../script.js"></script>
 <script>
-  const estadoSelect = document.getElementById('estado');
-const cidadeSelect = document.getElementById('cidade');
-
-// Carrega os estados do Brasil
-fetch('https://servicodados.ibge.gov.br/api/v1/localidades/estados?orderBy=nome')
-  .then(res => res.json())
-  .then(estados => {
-    let maranhaoId = null;
-
-    estados.forEach(estado => {
-      const opt = document.createElement('option');
-      opt.value = estado.id;
-      opt.textContent = estado.nome;
-
-      if (estado.sigla === 'MA') {
-        opt.selected = true; 
-        maranhaoId = estado.id;
-      }
-
-      estadoSelect.appendChild(opt);
-    });
-
-   
-    if (maranhaoId) {
-      carregarCidades(maranhaoId);
-    }
-  });
-
-
-function carregarCidades(estadoId) {
-  cidadeSelect.innerHTML = '<option value="">Carregando...</option>';
-
-  fetch(`https://servicodados.ibge.gov.br/api/v1/localidades/estados/${estadoId}/municipios`)
-    .then(res => res.json())
-    .then(cidades => {
-      cidadeSelect.innerHTML = '<option value="">Selecione uma cidade</option>';
-      cidades.forEach(cidade => {
-        const opt = document.createElement('option');
-        opt.value = cidade.id;
-        opt.textContent = cidade.nome;
-        cidadeSelect.appendChild(opt);
-      });
-    });
-}
-
-// Quando um estado for selecionado, carrega as cidades
-estadoSelect.addEventListener('change', () => {
-  const estadoId = estadoSelect.value;
-  if (estadoId) {
-    carregarCidades(estadoId);
-  }
-});
 
   let idebChart, enemMaChart, inseChart;
 
