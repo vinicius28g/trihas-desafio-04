@@ -159,11 +159,13 @@ async function atualizarGraficos() {
     ]
   };
 
-  const dadosEnemMA = {
-    categories: ['Linguagens', 'Matemática', 'Ciências Humanas', 'Ciências da Natureza', 'Redação'],
+  const dadosEnem = await dadosCidadeEnem();
+ console.log(dadosEnem.mediasEnem);
+  const dadosEnemMA = { 
+    categories: ['Linguagens', 'Matemática', 'Ciências Humanas', 'Ciências da Natureza', 'Redação', "media geral"],
     series: [{
-      name: 'Média MA',
-      data: [480, 470, 460, 455, 500],
+      name: 'Média do ENEM',
+      data:  dadosEnem.mediasEnem.map(Number),
       color: '#2563eb'
     }]
   };
@@ -208,8 +210,8 @@ function criarGraficoEnem(dados) {
     title: { text: '' },
     xAxis: { categories: dados.categories, crosshair: true },
     yAxis: {
-      min: 0,
-      max: 10,
+      min: 100,
+      max: 1000,
       title: { text: 'Pontos' }
     },
     tooltip: { shared: true },

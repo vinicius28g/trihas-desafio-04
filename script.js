@@ -101,6 +101,9 @@ async function dadosIdeb() {
         console.error(`Erro ao buscar dados para ${ano}:`, err);
       }
     }
+    console.log('idebObtido: ', idebObtido);
+    console.log('idebEsperado: ', idebEsperado);
+    console.log('categorias: ', categorias);
     return { idebObtido, idebEsperado, categorias };
 
 }
@@ -408,7 +411,6 @@ async function dadosInfraestruturaEscolar() {
 
 }
 
-dadosInfraestruturaEscolar();
 
 
 
