@@ -1,25 +1,31 @@
 :root {
     --cor-primaria: #0f5a4e;
     --cor-secundaria: #78b409;
-    --cor-terciaria: #5b8614;
+    --cor-terciaria: #9FC031;
     --cor-nome: #146f72;
     --cor-paragrafo: #FF3636;
+}
+
+* {
+    margin: 0;
+    padding: 0;
 }
 
 .navColor {
     background-color: var(--cor-primaria);
 }
 
+
 .itemNav {
     color: white;
-    margin-left: 20px;
-    margin-right: 20px;
+    white-space: nowrap;
 }
 
 .apresentacao {
     display: flex;
     gap: 20px;
    justify-content: space-between;
+   padding: 0;
 }
 
 .textoApresentacao {
@@ -30,31 +36,63 @@
 }
 
 .tituloApresentacao {
-    font-size: 5rem;
+    font-size: 4rem;
 }
 
 .paragrafoApresentacao {
-    font-size: 2rem;
+    font-size: 1.8rem;
     font-family: 'Inter', 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     width: 50%;
     margin-left: 10%;
     color: var(--cor-paragrafo);
     font-weight: 700;
+   text-shadow: 1px 1px 2.5px #DBF226;
 }
 
 .botaoDashBoard {
-    background-color: var(--cor-secundaria);
-    border-radius: 30px;
-    width: 80%;
-    height: 60px;
-    font-weight: 700;
-    font-size: 1.5rem;
+  background-color: var(--cor-secundaria);
+  border-radius: 30px;
+  width: 80%;
+  height: 60px;
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: black; /* cor normal do texto */
+  transition: background-color 0.3s, color 0.3s; /* suaviza a transição */
 }
+
+.botaoDashBoard:hover {
+  color: white;/* cor do texto ao passar o mouse */
+  cursor: pointer; /* muda o cursor para indicar que é clicável */
+}
+
 
 .divImagemCapa {
     text-align: end;
+    width: 50%;
 }
 
+.img-aspas-pequena{
+    position: relative;
+    width: 50px;
+    top: 60px;
+}
+.forma {
+  position: relative;
+  width: 500px;
+  height: 300px;
+  background-color: #f4f4f4; /* cor de fundo de exemplo */
+  overflow: hidden;
+}
+
+.semicirculo-esquerda {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #005F56; /* verde escuro */
+  border-top-left-radius: 200px;
+  border-bottom-left-radius: 200px;
+  left: 100px; /* empurra totalmente para a esquerda */
+}
 /*estilo da pagina Sobre*/
 .corDeFundoPagina {
     background-color: var(--cor-primaria);
@@ -177,9 +215,53 @@ nav {
     height: 4rem;
 }
 
-ul {
-    display: flex;
-    justify-content: space-between;
-    margin: 0rem 24rem 1rem 24rem;
-    text-decoration: none;
+.circulo-direita {
+  position: absolute;
+  width: 300px;
+  height: 90%;
+  background-color: #A4C639; /* verde claro */
+  border-radius: 50%;
+  left: 300px;
 }
+
+ /* ----------------------- pagina sobre -------------------- */
+
+ .div-sobre{
+    background-color: var(--cor-primaria);
+    width: 100%;
+    min-height: 90vh;
+ }
+
+ .titulo-sobre{
+    color:white;
+    font-size: 3rem;
+    text-align: center;
+    padding-top: 40px;
+ }
+
+ .img-aspas-pequena-sobre{
+    position: relative;
+    width: 50px;
+    top: 75px;
+    left: 3.5%;
+ }
+
+ .pergunta-sobre{
+    color: var(--cor-terciaria);
+    position: relative;
+    left: 10%;
+
+    font-size: 2rem;
+    text-align: left;
+    padding-top: 40px;
+ }
+
+ .texto-resposta-sobre{
+    color: white;
+    position: relative;
+    width: 50%;
+    left: 5%;
+    font-size: 1.5rem;
+    text-align: left;
+    padding-top: 40px;
+ }

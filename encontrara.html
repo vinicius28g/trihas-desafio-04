@@ -9,10 +9,37 @@
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 </head>
 <body>
+ <header>
+      <nav class="navbar navbar-expand-lg navbar-light navColor">
+        <div class="container-fluid">
+           <a class="navbar-brand" href="index.html" style="color: white; font-weight: bold;">EducaBrasil</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>  
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav mx-auto" >
+              <li class="nav-item">
+                <a class="nav-link  itemNav" aria-current="page" href="projeto.html">Sobre</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link itemNav" href="encontrara.html">O que você encontrará</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link itemNav" href="indicadores.html">Indicadores</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link itemNav" href="equipe.html" >Equipe</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+ </header>
     <section>
-            <header class="texto__apresentacao__encontrara">
+            <div class="texto__apresentacao__encontrara">
                 <h2 class="titulo__apresentacao__encontrara">O que você escontrará aqui?</h2>
-            </header>
+            </div>
               <div class="div__conteudo__encontrara">
                 <p class="paragrafo__conteudo__encontrara">Nosso dashboard interativo permite visualizar dados atualizados sobre a educação básica no Brasil, facilitando a análise de indicadores como IDEB, infraestrutura escolar e taxas de evasão por região.</p>
               </div>
