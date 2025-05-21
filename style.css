@@ -168,6 +168,69 @@
     padding-left: 110px;
 }
 
+/*estilo da pagina Equipe*/
+.texto__apresentacao__equipe {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.titulo__apresentacao__equipe {
+    font-size: 3rem;
+    color: var(--cor-primaria);
+    font-family: 'Inter', 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.div__conteudo__equipe__front {
+    display: flex;
+    justify-content: center;
+    gap: 90px;
+    margin-top: 90px;
+}
+
+.div__foto__front {
+    display: flex;
+    flex-direction: column;
+}
+
+.foto__front {
+    width: 35%;
+    border-radius: 100px;
+}
+
+.div__nome__equipe__front {
+    font-size: 1.2rem;
+    color: var(--cor-nome);
+    font-family: 'Inter', 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: 700;
+    width: 75%;
+}
+
+.div__conteudo__equipe__ux {
+    display: flex;
+    justify-content: center;
+    gap: 90px;
+    margin-top: 90px;
+}
+
+.div__foto__ux {
+    display: flex;
+    flex-direction: column;
+}
+
+.foto__ux {
+    width: 25%;
+    border-radius: 100px;
+}
+
+.div__nome__equipe__ux {
+    font-size: 1.2rem;
+    color: var(--cor-nome);
+    font-family: 'Inter', 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: 700;
+    width: 6%;
+}
+
 * {
     margin: 0;
     padding: 0;
