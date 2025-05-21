@@ -101,6 +101,9 @@ async function dadosIdeb() {
         console.error(`Erro ao buscar dados para ${ano}:`, err);
       }
     }
+    console.log('idebObtido: ', idebObtido);
+    console.log('idebEsperado: ', idebEsperado);
+    console.log('categorias: ', categorias);
     return { idebObtido, idebEsperado, categorias };
 
 }
@@ -405,10 +408,31 @@ async function dadosInfraestruturaEscolar() {
       }
     
      return mapDependencias;
+    
+    }
+    let mapaBrasilChart;
 
+function criarMapaEnemBrasil(dados) {
+  if (mapaBrasilChart) mapaBrasilChart.destroy();
+
+  mapaBrasilChart = Highcharts.mapChart('mapaBrasil', {
+    chart: { map: 'countries/br/br-all' },
+    title: { text: '' },
+    series: [{
+      name: 'IDEB Médio',
+      data: dados,
+      color: '#6366f1',
+      dataLabels: {
+        enabled: true,
+        format: '{point.name}'
+      }
+    }],
+    credits: { enabled: false }
+  });
 }
 
-dadosInfraestruturaEscolar();
+
+
 
 
 
