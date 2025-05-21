@@ -121,132 +121,123 @@
 
  <script src="../script.js"></script>
 <script>
-
   let idebChart, enemMaChart, inseChart;
 
-document.getElementById('estado').addEventListener('change', async () => {
-  const estadoId = document.getElementById('estado').value;
-  if (estadoId) {
-    await atualizarGraficos(estadoId);
+  // Simulando dados do IDEB
+  async function dadosIdeb() {
+    return {
+      categorias: ['2011', '2013', '2015', '2017', '2019'],
+      idebObtido: [3.2, 3.8, 4.0, 4.4, 4.8],
+      idebEsperado: [3.5, 4.0, 4.2, 4.5, 5.0]
+    };
   }
-});
 
-document.getElementById('cidade').addEventListener('change', async () => {
-  const cidadeId = document.getElementById('cidade').value;
-  if (cidadeId) {
-    await atualizarGraficos();
+  async function atualizarGraficos() {
+    const dados = await dadosIdeb();
+
+    const seriesIdeb = {
+      title: 'Nota do IDEB nos últimos 5 anos',
+      categories: dados.categorias,
+      series: [
+        {
+          name: 'IDEB Obtido',
+          data: dados.idebObtido,
+          color: 'green',
+        },
+        {
+          name: 'IDEB Esperada',
+          data: dados.idebEsperado,
+          dashStyle: 'Dash',
+          color: 'gray',
+        }
+      ]
+    };
+
+    const dadosEnemMA = {
+      categories: ['Linguagens', 'Matemática', 'Ciências Humanas', 'Ciências da Natureza', 'Redação'],
+      series: [{
+        name: 'Média MA',
+        data: [480, 470, 460, 455, 500],
+        color: '#2563eb'
+      }]
+    };
+
+    const dadosInse = {
+      categories: ['Nível 1', 'Nível 2', 'Nível 3', 'Nível 4', 'Nível 5', 'Nível 6', 'Nível 7', 'Nível 8'],
+      series: [{
+        name: 'Quantidade de Escolas',
+        data: [1200, 1000, 800, 600, 400, 200, 100, 50],
+        color: '#14b8a6'
+      }]
+    };
+
+    criarGraficoIdeb(seriesIdeb);
+    criarGraficoEnem(dadosEnemMA);
+    criarGraficoInse(dadosInse);
   }
-});
 
-async function atualizarGraficos() {
-  const dados = await dadosIdeb(); // Aqui você pode usar o estado para filtrar os dados
+  function criarGraficoIdeb(dados) {
+    if (idebChart) idebChart.destroy();
 
-  const seriesIdeb = {
-    title: 'Nota do IDEB nos últimos 5 anos',
-    categories: dados.categorias,
-    series: [
-      {
-        name: 'IDEB Obtido',
-        data: dados.idebObtido,
-        color: 'green',
+    idebChart = Highcharts.chart('idebChart', {
+      chart: { type: 'line' },
+      title: { text: '' },
+      xAxis: { categories: dados.categories },
+      yAxis: {
+        min: 0,
+        max: 10,
+        title: { text: 'Nota' }
       },
-      {
-        name: 'IDEB Esperada',
-        data: dados.idebEsperado,
-        dashStyle: 'Dash',
-        color: 'gray',
-      }
-    ]
-  };
-
-  const dadosEnem = await dadosCidadeEnem();
- console.log(dadosEnem.mediasEnem);
-  const dadosEnemMA = { 
-    categories: ['Linguagens', 'Matemática', 'Ciências Humanas', 'Ciências da Natureza', 'Redação', "media geral"],
-    series: [{
-      name: 'Média do ENEM',
-      data:  dadosEnem.mediasEnem.map(Number),
-      color: '#2563eb'
-    }]
-  };
-
-  const dadosInse = {
-    categories: ['Nível 1', 'Nível 2', 'Nível 3', 'Nível 4', 'Nível 5', 'Nível 6', 'Nível 7', 'Nível 8'],
-    series: [{
-      name: 'Quantidade de Escolas',
-      data: [1200, 1000, 800, 600, 400, 200, 100, 50],
-      color: '#14b8a6'
-    }]
-  };
-
-  criarGraficoIdeb(seriesIdeb);
-  criarGraficoEnem(dadosEnemMA);
-  criarGraficoInse(dadosInse);
-}
-
-function criarGraficoIdeb(dados) {
-  if (idebChart) idebChart.destroy();
-
-  idebChart = Highcharts.chart('idebChart', {
-    chart: { type: 'line' },
-    title: { text: '' },
-    xAxis: { categories: dados.categories },
-    yAxis: {
-      min: 0,
-      max: 10,
-      title: { text: 'Nota' }
-    },
-    tooltip: { shared: true },
-    series: dados.series,
-    credits: { enabled: false }
-  });
-}
-
-function criarGraficoEnem(dados) {
-  if (enemMaChart) enemMaChart.destroy();
-
-  enemMaChart = Highcharts.chart('enemMaChart', {
-    chart: { type: 'column' },
-    title: { text: '' },
-    xAxis: { categories: dados.categories, crosshair: true },
-    yAxis: {
-      min: 100,
-      max: 1000,
-      title: { text: 'Pontos' }
-    },
-    tooltip: { shared: true },
-    series: dados.series,
-    credits: { enabled: false }
-  });
-}
-
-function criarGraficoInse(dados) {
-  if (inseChart) inseChart.destroy();
-
-  inseChart = Highcharts.chart('inseChart', {
-    chart: { type: 'column' },
-    title: { text: '' },
-    xAxis: { categories: dados.categories, crosshair: true },
-    yAxis: {
-      min: 0,
-      title: { text: 'Quantidade de Escolas' }
-    },
-    tooltip: { shared: true },
-    series: dados.series,
-    credits: { enabled: false }
-  });
-}
-
-window.onload = async () => {
-  const estadoId = document.getElementById('estado').value;
-  if (estadoId) {
-    await atualizarGraficos(estadoId);
+      tooltip: { shared: true },
+      series: dados.series,
+      credits: { enabled: false }
+    });
   }
-};
+
+  function criarGraficoEnem(dados) {
+    if (enemMaChart) enemMaChart.destroy();
+
+    enemMaChart = Highcharts.chart('enemMaChart', {
+      chart: { type: 'column' },
+      title: { text: '' },
+      xAxis: { categories: dados.categories, crosshair: true },
+      yAxis: {
+        min: 0,
+        max: 1000,
+        title: { text: 'Nota (0 a 1000)' }
+      },
+      tooltip: { shared: true },
+      series: dados.series,
+      credits: { enabled: false }
+    });
+  }
+
+  function criarGraficoInse(dados) {
+    if (inseChart) inseChart.destroy();
+
+    inseChart = Highcharts.chart('inseChart', {
+      chart: { type: 'column' },
+      title: { text: '' },
+      xAxis: { categories: dados.categories, crosshair: true },
+      yAxis: {
+        min: 0,
+        title: { text: 'Quantidade de Escolas' }
+      },
+      tooltip: { shared: true },
+      series: dados.series,
+      credits: { enabled: false }
+    });
+  }
+
+  window.onload = async () => {
+    await atualizarGraficos();
+  };
 </script>
 
 
+
 <script>
+  
     // Dados de exemplo: cada objeto tem o código do estado e a média do indicador
     // O código dos estados no mapa highcharts usa a sigla em minúsculo (ex: 'br-sp' para São Paulo)
     
