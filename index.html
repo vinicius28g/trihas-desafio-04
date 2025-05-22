@@ -1,84 +1,190 @@
 <!doctype html>
 <html lang="pt-br">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Dashboard Educacional</title>
-    
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
 
-    <!-- Estilo personalizado -->
-    <link rel="stylesheet" href="style.css">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dashboard Educacional</title>
 
-  </head>
-  <body>
-    <header>
-      <nav class="navbar navbar-expand-lg navbar-light navColor">
-        <div class="container-fluid">
-           <a class="navbar-brand" href="index.html" style="color: white; font-weight: bold;">EducaBrasil</a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>  
-          <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav mx-auto" >
-              <li class="nav-item">
-                <a class="nav-link  itemNav" aria-current="page" href="projeto.html">Sobre</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link itemNav" href="encontrara.html">O que você encontrará</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link itemNav" href="indicadores.html">Indicadores</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link itemNav" href="equipe.html" >Equipe</a>
-              </li>
-            </ul>
-          </div>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
+
+  <!-- Estilo personalizado -->
+  <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-light navColor">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="index.html" style="color: white; font-weight: bold;">EducaBrasil</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav mx-auto">
+            <li class="nav-item">
+              <a class="nav-link  itemNav" aria-current="page" href="projeto.html">Sobre</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link itemNav" href="encontrara.html">O que você encontrará</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link itemNav" href="indicadores.html">Indicadores</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link itemNav" href="equipe.html">Equipe</a>
+            </li>
+          </ul>
         </div>
-      </nav>
-    </header>
+      </div>
+    </nav>
+  </header>
 
-    <main>
-      <section class="apresentacao d-flex flex-column flex-md-row align-items-center">
-        <div class="textoApresentacao me-md-5">
-          <h1 class="tituloApresentacao">Desafios da Educação Básica no Brasil</h1>
-          <div><img src="assets/img/aspas_pequena.png" class="img-aspas-pequena" alt="aspas aspas_pequena"></div>
-          <p class="paragrafoApresentacao">Explore dados e insights sobre evasão escolar, infraestrutura e desigualdades regionais</p>
-          <a href="#" class="btn btn-light botaoDashBoard mt-3" style="color: black;">Acessar Dashboard</a>
-        </div>
-        <div class="divImagemCapa">
-          <img src="assets/img/imagemCapa.png" alt="Imagem de capa ilustrativa" class="img-fluid">
-          <!-- <div class="forma">
+  <main>
+    <section class="apresentacao d-flex flex-column flex-md-row align-items-center">
+      <div class="textoApresentacao me-md-5">
+        <h1 class="tituloApresentacao">Desafios da Educação Básica no Brasil</h1>
+        <div><img src="assets/img/aspas_pequena.png" class="img-aspas-pequena" alt="aspas aspas_pequena"></div>
+        <p class="paragrafoApresentacao">Explore dados e insights sobre evasão escolar, infraestrutura e desigualdades
+          regionais</p>
+        <a href="encontrara.html" class="btn btn-light botaoDashBoard mt-3" style="color: black;">Acessar Dashboard</a>
+      </div>
+      <div class="divImagemCapa">
+        <img src="assets/img/imagemCapa.png" alt="Imagem de capa ilustrativa" class="img-fluid">
+        <!-- <div class="forma">
             <div class="semicirculo-esquerda"></div>
             <div class="circulo-direita"></div>
           </div> -->
-        </div>
-      </section>
+      </div>
+    </section>
 
-     <section class="div-sobre" style="margin: 0;">
-        <div class="container">
-          <h2 class="titulo-sobre">Sobre o projeto</h2>
-          <div>
-            <div><img src="assets/img/aspas_pequena.png" class="img-aspas-pequena-sobre" alt="aspas aspas_pequena"></div>
-            <h3 class="pergunta-sobre">Por que isso importa?</h3>
-            <p class="texto-resposta-sobre">A educação básica no Brasil enfrenta desafios significativos, como altas taxas de evasão escolar, infraestrutura inadequada e desigualdades regionais. Todos esses fatores comprometem o desenvolvimento educacional e social do país.</p>
+    <section class="div-sobre" style="margin: 0;">
+      <div class="container">
+        <h2 class="titulo-sobre">Sobre o projeto</h2>
+        <div>
+          <div><img src="assets/img/aspas_pequena.png" class="img-aspas-pequena-sobre" alt="aspas aspas_pequena"></div>
+          <h3 class="pergunta-sobre">Por que isso importa?</h3>
+          <p class="texto-resposta-sobre">A educação básica no Brasil enfrenta desafios significativos, como altas taxas
+            de evasão escolar, infraestrutura inadequada e desigualdades regionais. Todos esses fatores comprometem o
+            desenvolvimento educacional e social do país.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section__encontrara_idnex">
+      <div class="texto__apresentacao__encontrara">
+        <h2 class="titulo__apresentacao__encontrara">O que você escontrará aqui?</h2>
+      </div>
+      <div class="div__conteudo__encontrara">
+        <p class="paragrafo__conteudo__encontrara">Nosso dashboard interativo permite visualizar dados atualizados sobre
+          a educação básica no Brasil, facilitando a análise de indicadores como IDEB, infraestrutura escolar e média do
+          Enem por região.</p>
+      </div>
+      <div class="encontrarar-grafico-fotos">
+        <img src="/assets/img/graficos/graficoInse.png" alt="" class="img-grafico">
+        <img src="/assets/img/graficos/graficoIDB.png" alt="" class="img-grafico">
+        <img src="/assets/img/graficos/graficoEnem.png" alt="" class="img-grafico">
+        <img src="/assets/img/graficos/graficoIdebEstado.png" alt="" class="img-grafico">
+      </div>
+    </section>
+
+    <section class="corDeFundoPagina">
+      <div class="section__indicadores">
+        <h2 class="texto__apresentacao__indicadores">Indicadores em Destaque</h2>
+        <div class="div__conteudo__indicadores">
+          <p class="paragrafo__conteudo__indicadores__um">Enem: Média do Enem por ano e cidade.</p>
+          <p class="paragrafo__conteudo__indicadores__dois">IDEB: Desempenho das escolas no Índice de Desenvolvimento da
+            Educação Básica.</p>
+          <p class="paragrafo__conteudo__indicadores__um">Infraestrutura: Disponibilidade de recursos como quadras,
+            banheiros e acesso à internet.</p>
+          <p class="paragrafo__conteudo__indicadores__dois">INSE: Nível socioeconômico dos alunos por estado ou cidade.
+          </p>
+        </div>
+      </div>
+    </section>
+    <section>
+      <header class="texto__apresentacao__equipe">
+        <h2 class="titulo__apresentacao__equipe">Nossa equipe</h2>
+      </header>
+      <div class="container py-5">
+        <div class="row text-center">
+
+          <!-- Primeira linha com 4 perfis -->
+          <div class="col-6 col-md-3 perfil">
+            <img src="assets/img/imagemAliceTorres.jpg" alt="Alice">
+            <p class="nome">Alice Torres</p>
+            <p class="trilha">Front-End</p>
           </div>
+
+          <div class="col-6 col-md-3 perfil">
+            <img src="assets/img/imagemRenato.jpg" alt="Renato">
+            <p class="nome">Renato Bento</p>
+            <p class="trilha">Front-End</p>
+          </div>
+
+          <div class="col-6 col-md-3 perfil">
+            <img src="assets/img/imagemVinicius.jpeg" alt="Vincius Guimarães">
+            <p class="nome">Vinicus Guimarães</p>
+            <p class="trilha">Front-End</p>
+          </div>
+
+          <div class="col-6 col-md-3 perfil">
+            <img src="/assets/img/foto_maria.jpeg" alt="Maria">
+            <p class="nome">Maria</p>
+            <p class="trilha">Front-End</p>
+          </div>
+
+          <!-- Segunda linha com 3 perfis -->
+          <div class="col-6 col-md-4 perfil">
+            <img src="/assets/img/foto_mateus.jpeg" alt="Matheus">
+            <p class="nome">Matheus</p>
+            <p class="trilha">UX design</p>
+          </div>
+
+          <div class="col-6 col-md-4 perfil">
+            <img src="/assets/img/imagemRose.jpeg" alt="Rhouse">
+            <p class="nome">Rhouseanne Cristine </p>
+            <p class="trilha">UX design</p>
+          </div>
+
+          <div class="col-6 col-md-4 perfil">
+            <img src="" alt="Rhuan">
+            <p class="nome">Rhuan</p>
+            <p class="trilha">UX design</p>
+          </div>
+
         </div>
-      </section>
+      </div>
+
+    </section>
+
+    <section class="dashboard-section">
+      <div class="dashboard-header">
+        <img src="/assets/img/aspas_pequena.png" alt="" class="img-aspas-pequena-dashboard">
+        <h2 class="dashboard-title">Quer descobrir tudo isso?</h2>
+        <p class="dashboard-subtitle">
+          Acesse agora nosso dashboard e acompanhe os dados de maneira visual e interativa
+        </p>
+      </div>
+
+      <a href="encontrara.html" class="dashboard-button">Acessar Dashboard</a>
+    </section>
 
 
-     
 
+  </main>
 
-    </main>
+  <!-- Script principal -->
+  <script src="script.js"></script>
 
-    <!-- Script principal -->
-    <script src="script.js"></script>
+  <!-- Bootstrap JS (bundle inclui Popper) -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO"
+    crossorigin="anonymous"></script>
+</body>
 
-    <!-- Bootstrap JS (bundle inclui Popper) -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
-  </body>
 </html>
