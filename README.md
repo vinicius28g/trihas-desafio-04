@@ -45,7 +45,7 @@ O projeto tem como foco principal **facilitar o acesso e a interpretação de da
 
 ---
 
-## 📁 Estrutura do Projeto
+## Estrutura do Projeto
 
 ```text
 ├── index.html                # Landing Page
@@ -66,7 +66,7 @@ O projeto tem como foco principal **facilitar o acesso e a interpretação de da
 
 ---
 
-## 💻 Como Rodar Localmente
+## Como Rodar Localmente
 
 ```bash
 # Clone o repositório
@@ -105,7 +105,7 @@ Ou, se estiver usando o VS Code:
 
 ---
 
-## 📚 Fontes de Dados
+## Fontes de Dados
 
 - [QEdu API](https://api.qedu.org.br)
 - INEP – Instituto Nacional de Estudos e Pesquisas Educacionais
