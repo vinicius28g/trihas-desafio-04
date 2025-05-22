@@ -1,13 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
-    <link rel="stylesheet" href="style.css">
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
+  <link rel="stylesheet" href="style.css">
+
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+  <!-- Highmaps (inclui Highcharts + suporte a mapas) -->
+  <script src="https://code.highcharts.com/maps/highmaps.js"></script>
+  <script src="https://code.highcharts.com/maps/modules/exporting.js"></script>
+  <script src="https://code.highcharts.com/maps/modules/export-data.js"></script>
+  
+  <!-- Mapa do Brasil -->
+  <script src="https://code.highcharts.com/mapdata/countries/br/br-all.js"></script>
 </head>
+
 <body>
  <header>
       <nav class="navbar navbar-expand-lg navbar-light navColor">
@@ -37,17 +48,113 @@
       </nav>
  </header>
     <section>
-            <div class="texto__apresentacao__encontrara">
-                <h2 class="titulo__apresentacao__encontrara">O que você escontrará aqui?</h2>
-            </div>
-              <div class="div__conteudo__encontrara">
-                <p class="paragrafo__conteudo__encontrara">Nosso dashboard interativo permite visualizar dados atualizados sobre a educação básica no Brasil, facilitando a análise de indicadores como IDEB, infraestrutura escolar e taxas de evasão por região.</p>
-              </div>
-        </section>
+      <div class="texto__apresentacao__encontrara">
+          <h2 class="titulo__apresentacao__encontrara">O que você escontrará aqui?</h2>
+      </div>
+      <div class="div__conteudo__encontrara">
+        <p class="paragrafo__conteudo__encontrara">Nosso dashboard interativo permite visualizar dados atualizados sobre a educação básica no Brasil, facilitando a análise de indicadores como IDEB, infraestrutura escolar e média do Enem por região.</p>
+      </div>
+    </section>
 
-        <script src="script.js"></script>
+    <section style="margin-bottom: 30px;">
+        <!-- Filtros -->
+        <select id="estado" class="border rounded px-3 py-2" onchange="aoMudarEstado()">
+          <option value="">Selecione um estado</option>
+        </select>
+
+        <select id="cidade" class="border rounded px-3 py-2" onchange="aoMudarCidade()">
+          <option value="">Selecione uma cidade</option>
+        </select>
+
+     <select name="select_ano" class="border rounded px-3 py-2" id="select_ano" onchange="aoMudarAno()">
+        <option value="2019" selected>2019</option>
+        <option value="2017">2017</option>
+        <option value="2015">2015</option>
+        <option value="2013">2013</option>
+        <option value="2011">2011</option>
+      </select>
+
+     
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <div class="card div-grafico" style="min-height: 300px;">
+              <h2 class="text-xl font-semibold">Nota do IDEB nos últimos 5 anos</h2>
+              <div class="carregando-dados" id="carregamento-ideb">Carregando dados</div>
+              <div class="erro-grafico" id="erro-ideb">Erro ao buscar dados <button type="button" onclick="location.reload()">tente novamente</button></div>
+              <div id="idebChart"></div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card div-grafico">
+              <h2 class="text-xl font-semibold">Média do enem por Estado</h2>
+              <div class="carregando-dados" id="carregamento-idebEstado">Carregando dados</div>
+              <div class="erro-grafico" id="erro-idebEstado">Erro ao buscar dados <button type="button" onclick="location.reload()">tente novamente</button></div>
+              <div id="idebEstadosChart"></div>
+            </div>
+          </div>
+          
+        </div>
+        <div class="row">
+          <div class="col">
+            <div class="card div-grafico">
+              <h2 class="text-xl font-semibold">Distribuição % do Nível INSE</h2>
+              <div class="carregando-dados" id="carregamento-inse">Carregando dados</div>
+              <div class="erro-grafico" id="erro-inse">Erro ao buscar dados <button type="button" onclick="location.reload()">tente novamente</button></div>
+              <div id="inseChart"></div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card div-grafico" >
+              <h2 class="text-xl font-semibold mb-4">Notas do ENEM</h2>
+              <div class="carregando-dados" id="carregamento-enem">Carregando dados</div>
+              <div class="erro-grafico" id="erro-enem">Erro ao buscar dados <button type="button" onclick="location.reload()">tente novamente</button></div>
+              <div id="enemMaChart"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+    </section>
+
+    <script src="/js/script.js"></script>
+    <script src="/js/graficosIdeb.js"></script>
+    <script src="/js/graficoEnem.js"></script>
+    <script src="/js/graficoInse.js"></script>
+    <script src="/js/graficoIdebEstado.js"></script>
+    <script>
+      window.onload = function() {
+        
+        carregarGraficos()
+      }
+      function carregarGraficos(){
+        createIdebChart();
+        criarGraficoEnem();
+        criarGraficoInse();
+        gerarGraficoMapaIdeb();
+      }
+
+      function aoMudarEstado() {
+        createIdebChart();            // gráfico estadual
+        criarGraficoInse();           // INSE com base no estado
+      }
+
+      function aoMudarCidade() {
+        createIdebChart();            // ideb da cidade
+        criarGraficoEnem();          // ENEM da cidade
+        criarGraficoInse();          // INSE com base na cidade
+      }
+      function aoMudarAno() {
+        criarGraficoEnem();
+        criarGraficoInse();
+        gerarGraficoMapaIdeb();
+      }
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.min.js" integrity="sha384-RuyvpeZCxMJCqVUGFI0Do1mQrods/hhxYlcVfGPOfQtPJh0JCw12tUAZ/Mv10S7D" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.min.js" integrity="sha384-RuyvpeZCxMJCqVUGFI0Do1mQrods/hhxYlcVfGPOfQtPJh0JCw12tUAZ/Mv10S7D" crossorigin="anonymous"></script>
 </body>
 </html>

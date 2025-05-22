@@ -1,33 +1,9 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-  <meta charset="UTF-8" />
-  <title>Mapa Brasil - Média por Estado</title>
-  <script src="https://code.highcharts.com/maps/highmaps.js"></script>
-  <script src="https://code.highcharts.com/maps/modules/exporting.js"></script>
-  <script src="https://code.highcharts.com/mapdata/countries/br/br-all.js"></script>
-  
-  
-</head>
-<body>
-    <select name="select_ano" class="border rounded px-3 py-2" id="select_ano_ideb_mapa" onchange="gerarGraficoMapaIdeb()">
-        <option value="">Todas</option>
-        <option value="2019" selected>2019</option>
-        <option value="2017">2017</option>
-        <option value="2015">2015</option>
-        <option value="2013">2013</option>
-        <option value="2011">2011</option>
-      </select>
-  <div id="container" style="width: 800px; height: 600px; margin: 0 auto"></div>
-  <script src="../script.js"></script>
-  <script>
-    // Dados de exemplo: cada objeto tem o código do estado e a média do indicador
-    // O código dos estados no mapa highcharts usa a sigla em minúsculo (ex: 'br-sp' para São Paulo)
 let idebEstadoChart = null;
 async function gerarGraficoMapaIdeb() {
 
 
   const dadosMapaIdeb = await dadosIdebEstado();
+  console.log("Dados Mapa IDEB:", dadosMapaIdeb);
   if (idebEstadoChart) idebEstadoChart.destroy();
 
   // Gera os dados do mapa
@@ -62,12 +38,12 @@ async function gerarGraficoMapaIdeb() {
   ];
 
   // Substitui a mensagem pelo gráfico
- idebEstadoChart = Highcharts.mapChart('idebEstados', {
+ idebEstadoChart = Highcharts.mapChart('idebEstadosChart', {
     chart: {
       map: 'countries/br/br-all'
     },
     title: {
-      text: 'Média do Indicador do IDEB por Estado - Brasil no ano ' + document.getElementById('select_ano_ideb_mapa').value
+      text: 'Média do Indicador do IDEB por Estado - Brasil no ano ' + document.getElementById('select_ano').value
     },
     colorAxis: {
       min: 3,
@@ -96,7 +72,3 @@ async function gerarGraficoMapaIdeb() {
     }]
   });
 } 
-gerarGraficoMapaIdeb();
-  </script>
-</body>
-</html>
