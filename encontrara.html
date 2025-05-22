@@ -56,7 +56,7 @@
       </div>
     </section>
 
-    <section style="margin-bottom: 30px;">
+    <section style="margin-bottom: 30px;" class="filtros">
         <!-- Filtros -->
         <select id="estado" class="border rounded px-3 py-2" onchange="aoMudarEstado()">
           <option value="">Selecione um estado</option>
@@ -80,17 +80,17 @@
     <section>
       <div class="container">
         <div class="row">
-          <div class="col">
+          <div class="col-md-6">
             <div class="card div-grafico" style="min-height: 300px;">
-              <h2 class="text-xl font-semibold">Nota do IDEB nos últimos 5 anos</h2>
+              <h4 class="text-xl font-semibold">Nota do IDEB nos últimos 5 anos</h4>
               <div class="carregando-dados" id="carregamento-ideb">Carregando dados</div>
               <div class="erro-grafico" id="erro-ideb">Erro ao buscar dados <button type="button" onclick="location.reload()">tente novamente</button></div>
               <div id="idebChart"></div>
             </div>
           </div>
-          <div class="col">
+          <div class="col-md-6">
             <div class="card div-grafico">
-              <h2 class="text-xl font-semibold">Média do enem por Estado</h2>
+              <h4 class="text-xl font-semibold">Média do enem por Estado</h4>
               <div class="carregando-dados" id="carregamento-idebEstado">Carregando dados</div>
               <div class="erro-grafico" id="erro-idebEstado">Erro ao buscar dados <button type="button" onclick="location.reload()">tente novamente</button></div>
               <div id="idebEstadosChart"></div>
@@ -99,17 +99,17 @@
           
         </div>
         <div class="row">
-          <div class="col">
+          <div class="col-md-6">
             <div class="card div-grafico">
-              <h2 class="text-xl font-semibold">Distribuição % do Nível INSE</h2>
+              <h4 class="text-xl font-semibold">Distribuição % do Nível INSE</h4>
               <div class="carregando-dados" id="carregamento-inse">Carregando dados</div>
               <div class="erro-grafico" id="erro-inse">Erro ao buscar dados <button type="button" onclick="location.reload()">tente novamente</button></div>
               <div id="inseChart"></div>
             </div>
           </div>
-          <div class="col">
+          <div class="col-md-6">
             <div class="card div-grafico" >
-              <h2 class="text-xl font-semibold mb-4">Notas do ENEM</h2>
+              <h4 class="text-xl font-semibold mb-4">Notas do ENEM</h4>
               <div class="carregando-dados" id="carregamento-enem">Carregando dados</div>
               <div class="erro-grafico" id="erro-enem">Erro ao buscar dados <button type="button" onclick="location.reload()">tente novamente</button></div>
               <div id="enemMaChart"></div>

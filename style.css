@@ -1,3 +1,7 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+
 :root {
     --cor-primaria: #0f5a4e;
     --cor-secundaria: #78b409;
@@ -41,7 +45,7 @@
 
 .paragrafoApresentacao {
     font-size: 1.8rem;
-    font-family: 'Inter', 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-family: "Inter", sans-serif;
     width: 50%;
     margin-left: 10%;
     color: var(--cor-paragrafo);
@@ -107,7 +111,7 @@
 .titulo__apresentacao__projeto {
     font-size: 3rem;
     color: white;
-    font-family: 'Inter', 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-family: "Inter", sans-serif;
     font-weight: 700;
 }
 
@@ -126,7 +130,7 @@
 .paragrafo__conteudo__projeto {
     font-size: 1.5rem;
     color: white;
-    font-family: 'Inter', 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-family: "Inter", sans-serif;
     width: 50%;
     font-weight: 700;
 }
@@ -141,7 +145,7 @@
 .titulo__apresentacao__encontrara {
     font-size: 3rem;
     color: #0f5a4e;
-    font-family: 'Inter', 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-family: "Inter", sans-serif;
 }
 
 .div__conteudo__encontrara {
@@ -151,7 +155,7 @@
 
 .paragrafo__conteudo__encontrara {
     font-size: 1.5rem;
-    font-family: 'Inter', 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+     font-family: "Inter", sans-serif;
     width: 50%;
     font-weight: 500;
 }
@@ -167,7 +171,7 @@
     display: flex;
     font-size: 4rem;
     color: white;
-    font-family: 'Inter', 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-family: "Inter", sans-serif;
     width: min-content;
     margin: 0px 30px;
 }
@@ -183,11 +187,11 @@
 .paragrafo__conteudo__indicadores__dois {
     font-size: 1.2rem;
     color: #000000;
-    font-family: 'Inter', 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-family: "Inter", sans-serif;
     font-weight: 500;
     border-radius: 20px;
     background-color: #5b8614;
-    width: 110%;
+    width: 100%;
     height: 80px;
     align-content: center;
     padding-left: 110px;
@@ -196,11 +200,11 @@
 .paragrafo__conteudo__indicadores__um {
     font-size: 1.2rem;
     color: #000000;
-    font-family: 'Inter', 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+     font-family: "Inter", sans-serif;
     font-weight: 500;
     border-radius: 20px;
     background-color: #78b409;
-    width: 110%;
+    width: 100%;
     height: 80px;
     align-content: center;
     padding-left: 110px;
@@ -216,7 +220,7 @@
 .titulo__apresentacao__equipe {
     font-size: 3rem;
     color: var(--cor-primaria);
-    font-family: 'Inter', 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+     font-family: "Inter", sans-serif;
 }
 
 .div__conteudo__equipe__front {
@@ -239,7 +243,7 @@
 .div__nome__equipe__front {
     font-size: 1.2rem;
     color: var(--cor-nome);
-    font-family: 'Inter', 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+     font-family: "Inter", sans-serif;
     font-weight: 700;
     width: 75%;
 }
@@ -264,7 +268,7 @@
 .div__nome__equipe__ux {
     font-size: 1.2rem;
     color: var(--cor-nome);
-    font-family: 'Inter', 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-family: "Inter", sans-serif;
     font-weight: 700;
     width: 6%;
 }
@@ -368,4 +372,142 @@ nav {
 
 .erro-grafico button:hover {
   background-color: darkred;
+}
+
+/* pagina sobre */
+
+ .perfil {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .perfil img, .perfil .circulo {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 10px;
+    }
+
+    .circulo {
+      background-color: #005e52;
+      display: inline-block;
+    }
+
+    .nome {
+      font-weight: bold;
+      margin: 0;
+    }
+
+    .trilha {
+      color: #005e52;
+      font-weight: 600;
+      margin: 0;
+    }
+
+    .custom-cor {
+      background-color: #a5cb1c;
+    }
+
+
+/* ---------------------------------- mobille ----------------------------------*/
+
+@media (max-width: 991.98px) { 
+  .navbar-collapse .nav-link.itemNav {
+    margin-left: 5px;
+  }
+  .navbar-collapse {
+    background-color: var(--cor-primaria);
+  }
+  .tituloApresentacao{
+    font-size: 2.5rem;
+  }
+  .paragrafoApresentacao{
+    font-size: 1.2rem;
+    width: 80%;
+    margin-left: 10%;
+  }
+  .img-aspas-pequena{
+    position: relative;
+    width: 30px;
+    top: 40px;
+  }
+  .img-fluid{
+    transform: rotate(90deg);
+  transform-origin: center;
+  width: 100vh; /* ocupa a altura da tela como se fosse largura */
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  }
+  .divImagemCapa{
+    text-align: center;
+    width: 100%;
+  }
+
+  .img-aspas-pequena-sobre{
+    position: relative;
+    width: 30px;
+    top: 60px;
+    left: 3.5%;
+  }
+  .pergunta-sobre{
+    position: relative;
+    left: 15%;
+    font-size: 1.5rem;
+  }
+
+  .titulo__apresentacao__encontrara{
+    font-size: 2.5rem;
+    width: 90%;
+  }
+
+  .div__conteudo__encontrara{
+   width: 90%;
+  }
+  .paragrafo__conteudo__encontrara{
+    font-size: 1.2rem;
+    width: 90%;
+    margin-left: 5%;
+  }
+  .filtros{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 20px;
+    margin-left: 5%;
+  }
+
+  .section__indicadores{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .texto__apresentacao__indicadores{
+    font-size: 2.5rem;
+    width: 90%;
+  }
+  .paragrafo__conteudo__indicadores__um{
+    font-size: 1.2rem;
+    width: 100%;
+    padding-left: 5%;
+  }
+  .paragrafo__conteudo__indicadores__dois{
+    font-size: 1.2rem;
+    width: 100%;
+    padding-left: 5%;
+  }
+  .titulo__apresentacao__equipe{
+    font-size: 2.5rem;
+    width: 90%;
+  }
+  .paragrafo__conteudo__projeto{
+    font-size: 1.2rem;
+    width: 90%;
+  }
+  .texto-resposta-sobre{
+    font-size: 1.2rem;
+    width :75%;
+  }
+  
 }
