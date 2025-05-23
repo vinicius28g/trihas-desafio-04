@@ -37,10 +37,11 @@ O projeto tem como foco principal **facilitar o acesso e a interpretação de da
 
 ## 🛠 Tecnologias Utilizadas
 
-- **HTML5**
+- **HTML5** 
 - **CSS3**
 - **JavaScript**
-- **Chart.js** – para gráficos interativos
+- **Bootrap**
+- **Higcharts** – para gráficos interativos
 - **Vercel** – hospedagem
 
 ---
