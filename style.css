@@ -160,6 +160,17 @@
     font-weight: 500;
 }
 
+.encontrarar-grafico-fotos {
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+}
+
+.img-grafico {
+ width: 22%;
+  border-radius: 15px;
+}
+
 /*estilo da pagina indicadores*/
 .section__indicadores {
     display: flex;
@@ -332,6 +343,9 @@ nav {
     text-align: left;
     padding-top: 40px;
  }
+ .section__encontrara_idnex{
+  height: 90vh;
+ }
 
  /* ------------------------ graficos -------------------------*/
  .div-grafico{
@@ -409,6 +423,69 @@ nav {
       background-color: #a5cb1c;
     }
 
+/* pagina e acesso ao ashboard */
+.dashboard-section {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  height: 100vh;
+}
+
+.dashboard-header {
+  background-color: #00695c;
+  color: white;
+  border-bottom-left-radius: 100% 40%;
+  border-bottom-right-radius: 100% 40%;
+  width: 100%;
+  height: 60vh;
+  margin: 0 auto;
+  position: relative;
+
+  /* Centralizar conteúdo */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.img-aspas-pequena-dashboard{
+  position: absolute;
+  width: 50px;
+  top: 23vh;
+  left: 32%;
+}
+
+.dashboard-icons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.dashboard-title {
+  font-size: 2em;
+  margin: 0 0 15px;
+}
+
+.dashboard-subtitle {
+  font-size: 1em;
+  font-weight: bold;
+  margin: 0;
+}
+
+.dashboard-button {
+  display: inline-block;
+  margin-top: 40px;
+  background-color: #a2c91c;
+  color: #1a1a1a;
+  padding: 15px 30px;
+  border-radius: 20px;
+  font-size: 1em;
+  text-decoration: none;
+  font-weight: bold;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
 
 /* ---------------------------------- mobille ----------------------------------*/
 
@@ -508,6 +585,26 @@ nav {
   .texto-resposta-sobre{
     font-size: 1.2rem;
     width :75%;
+  }
+  .img-aspas-pequena-dashboard{
+  width: 30px;
+  top: 17vh;
+  left: 5%;
+}
+  .section__encontrara_idnex{
+    height: auto;
+  }
+  .encontrarar-grafico-fotos{
+    flex-direction: column;
+    gap: 20px;
+    justify-content: center;
+  }
+  .img-grafico{
+    width: 100%;
+    border-radius: 15px;
+  }
+  .dashboard-subtitle{
+    margin: 5%;
   }
   
 }
